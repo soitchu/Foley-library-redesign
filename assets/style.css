@@ -19,12 +19,11 @@ div {
     left: 0;
     height: 70px;
     width: 100%;
-    background-color: #e1e1e1;
+    background-color: #efefef;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    border-bottom: 1px solid black;
 }
 
 #libName,
@@ -71,5 +70,104 @@ div {
 .menuItem:hover::before {
     opacity: 1;
     width: 100%;
+}
 
+#mainBody {
+    margin-top: 140px;
+    width: 100%;
+    text-align: center;
+}
+
+#searchCon {
+    width: 600px;
+    max-width: calc(100% - 50px);
+    padding: 60px 20px;
+    background-color: rgb(236, 236, 236);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 10px 10px;
+
+}
+
+#searchBox {
+    width: 50%;
+    height: 30px;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 5px 10px;
+    border: 1px solid black;
+}
+
+#searchButton {
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    background: black;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48' fill='%23ffffff' viewBox='0 96 960 960' width='48'%3E%3Cpath d='M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z'/%3E%3C/svg%3E");
+}
+
+#searchTabs {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: left;
+    transform: translateY(-100%);
+}
+
+.tab {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.tab.active {
+    color: black;
+    background-color: #f2f2f2;
+    border: 1px solid black;
+    /* text-decoration: underline; */
+}
+
+#howTo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.how {
+    height: 200px;
+    width: 200px;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.howTitle {
+    font-size: 17px;
+    color: black;
+    text-align: left;
+}
+
+.howTitleSecondary {
+    font-size: 15px;
+    color: black;
+    margin-top: 10px;
+    text-align: left;
+    font-weight: bold;
 }
