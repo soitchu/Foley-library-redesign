@@ -19,12 +19,10 @@ container.addEventListener("scroll", function () {
 });
 
 
-
-
 function newCard(data) {
     const con = document.createElement("div");
     con.className = "s-lg-az-result";
-    con.innerHTML = `<div class="s-lg-az-result-title">
+    con.innerHTML = `<div class="s-lg-az-result-title" ${!data.description ? "style = \"margin-bottom: 0 !important;\"" : ""}>
                         <a href="${data.link}">${data.title}</a>
                     </div>
 
@@ -36,7 +34,7 @@ function newCard(data) {
 
 }
 
-function newHeading(title){
+function newHeading(title) {
     const heading = document.createElement("h3");
     heading.className = "s-lg-db-panel-title";
     heading.textContent = title;
@@ -51,7 +49,7 @@ for (const heading of researchGuideData) {
     const headingDOM = newHeading(heading.heading);
     const firstChar = heading.heading[0];
 
-    if(lastFirstChar != firstChar || lastFirstChar == null){
+    if (lastFirstChar != firstChar || lastFirstChar == null) {
         index.push(firstChar.toUpperCase());
         headingDOM.id = `s-lg-az-name-${firstChar.toLowerCase()}`;
     }
@@ -80,4 +78,12 @@ for (let i = 0; i < index.length; i++) {
     });
 
     quickLinks.append(newLink);
+}
+
+const resultCards = document.querySelectorAll(".s-lg-az-result");
+
+for (const card of resultCards) {
+    card.addEventListener("click", function () {
+        card.classList.toggle("open");
+    });
 }
