@@ -21,6 +21,8 @@ for (let i = 65; i < 65 + 23; i++) {
     newLink.textContent = alphabet;
 
     newLink.addEventListener("click", function () {
+        history.pushState({}, "", "#" + alphabet);
+
         const DOMToScroll = document.getElementById(`s-lg-az-name-${alphabet.toLowerCase()}`);
         if (DOMToScroll) {
             DOMToScroll.scrollIntoView();
@@ -44,4 +46,13 @@ container.addEventListener("scroll", function () {
 
 window.onresize = () => {
     lastOffsetTop = null;
+}
+
+if (location.hash) {
+    const index = location.hash.substring(1);
+    const DOMToScroll = document.getElementById(`s-lg-az-name-${index.toLowerCase()}`);
+    if (DOMToScroll) {
+        DOMToScroll.scrollIntoView();
+        document.getElementById("container").scrollBy(0, -200);
+    }
 }

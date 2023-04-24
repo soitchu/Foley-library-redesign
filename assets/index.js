@@ -40,7 +40,6 @@ for (const item of menuItems) {
 
     if (expandedMenu) {
         expandedMenu.addEventListener("click", function (event) {
-            event.preventDefault();
             event.stopPropagation();
         });
     }

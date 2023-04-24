@@ -23,7 +23,7 @@ function newCard(data) {
     const con = document.createElement("div");
     con.className = "s-lg-az-result";
     con.innerHTML = `<div class="s-lg-az-result-title" ${!data.description ? "style = \"margin-bottom: 0 !important;\"" : ""}>
-                        <a href="${data.link}">${data.title}</a>
+                        <a href="${data.link}" target="_blank">${data.title}</a>
                     </div>
 
                     <div class="s-lg-az-result-description">
@@ -70,6 +70,7 @@ for (let i = 0; i < index.length; i++) {
     newLink.textContent = alphabet;
 
     newLink.addEventListener("click", function () {
+        history.pushState({}, "", "#" + alphabet);
         const DOMToScroll = document.getElementById(`s-lg-az-name-${alphabet.toLowerCase()}`);
         if (DOMToScroll) {
             DOMToScroll.scrollIntoView();
@@ -83,11 +84,29 @@ for (let i = 0; i < index.length; i++) {
 const resultCards = document.querySelectorAll(".s-lg-az-result");
 
 for (const card of resultCards) {
-    card.addEventListener("click", function () {
-        card.classList.toggle("open");
-    });
+
+    card
+        .querySelector(".s-lg-az-result-description")
+        .addEventListener("click", function () {
+            card.classList.toggle("open");
+        });
+
+    card
+        .querySelector(".s-lg-az-result-title")
+        .addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
 }
 
 window.onresize = () => {
     lastOffsetTop = null;
+}
+
+if (location.hash) {
+    const index = location.hash.substring(1);
+    const DOMToScroll = document.getElementById(`s-lg-az-name-${index.toLowerCase()}`);
+    if (DOMToScroll) {
+        DOMToScroll.scrollIntoView();
+        document.getElementById("container").scrollBy(0, -200);
+    }
 }
