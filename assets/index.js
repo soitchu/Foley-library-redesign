@@ -1,4 +1,3 @@
-const searchTabs = document.querySelector("#searchTabs").children;
 const placeholders = [
     "Search for books, e-books, articles, videos, and more",
     "Search by instructor, course number, item title, or keyword",
@@ -14,20 +13,25 @@ function closeAllMenu() {
     }
 }
 
-for (const tab of searchTabs) {
-    tab.addEventListener("click", function () {
-        let count = 0;
-        for (const tab of searchTabs) {
-            if (tab === this) {
-                tab.classList.add("active");
-                document.getElementById("searchBox").placeholder = placeholders[count];
-            } else {
-                tab.classList.remove("active");
-            }
 
-            count++;
-        }
-    });
+let searchTabs = document.querySelector("#searchTabs");
+if (searchTabs) {
+    searchTabs = searchTabs.children;
+    for (const tab of searchTabs) {
+        tab.addEventListener("click", function () {
+            let count = 0;
+            for (const tab of searchTabs) {
+                if (tab === this) {
+                    tab.classList.add("active");
+                    document.getElementById("searchBox").placeholder = placeholders[count];
+                } else {
+                    tab.classList.remove("active");
+                }
+
+                count++;
+            }
+        });
+    }
 }
 
 for (const item of menuItems) {
@@ -50,7 +54,6 @@ for (const item of menuItems) {
 
     item.addEventListener("click", function () {
         closeAllMenu();
-        console.log(this.getAttribute("open"));
         if (this.getAttribute("open") === "true") {
             spotlightDOM.style.display = "none";
             this.classList.remove("open");
