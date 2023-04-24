@@ -40,3 +40,8 @@ container.addEventListener("scroll", function () {
         quickLinks.classList.contains("stickied") ? quickLinks.classList.remove("stickied") : null;
     }
 });
+
+
+window.onresize = () => {
+    lastOffsetTop = null;
+}

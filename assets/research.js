@@ -87,3 +87,7 @@ for (const card of resultCards) {
         card.classList.toggle("open");
     });
 }
+
+window.onresize = () => {
+    lastOffsetTop = null;
+}
