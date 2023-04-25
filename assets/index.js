@@ -17,13 +17,27 @@ function closeAllMenu() {
 let searchTabs = document.querySelector("#searchTabs");
 if (searchTabs) {
     searchTabs = searchTabs.children;
+
+    const searchLinks = [
+        "https://library.search.gonzaga.edu/discovery/search?vid=01WIN_GONZAGA:FOLEY&tab=Gonzaga_Summit_CDI&search_scope=zagsummitcdi&lang=en&pcAvailability=true&query=any,contains,",
+        "https://library.search.gonzaga.edu/discovery/search?tab=CourseReserves&search_scope=CourseReserves&vid=01WIN_GONZAGA:FOLEY&lang=en&offset=0&query=any,contains,",
+        "https://library.search.gonzaga.edu/discovery/jsearch?vid=01WIN_GONZAGA:FOLEY&tab=jsearch_slot&lang=en&pcAvailability=true&query=any,contains,"
+    ];
+
+    let currentTab = 0;
+    const searchButton = document.querySelector("#searchButton");
+    const searchBox = document.querySelector("#searchBox");
+    const searchForm = document.querySelector("#searchForm");
+
     for (const tab of searchTabs) {
         tab.addEventListener("click", function () {
             let count = 0;
             for (const tab of searchTabs) {
                 if (tab === this) {
+                    currentTab = count;
                     tab.classList.add("active");
-                    document.getElementById("searchBox").placeholder = placeholders[count];
+                    searchBox.value = "";
+                    searchBox.placeholder = placeholders[count];
                 } else {
                     tab.classList.remove("active");
                 }
@@ -32,6 +46,17 @@ if (searchTabs) {
             }
         });
     }
+
+    searchButton.addEventListener("click", function () {
+        const query = searchBox.value;
+        window.open(searchLinks[currentTab] + query, "_blank");
+    });
+
+    const clip = new ClipboardJS('.copy');
+
+    clip.on('success', function (e) {
+        alert("Copied the phone number to your clipboard!");
+    });
 }
 
 for (const item of menuItems) {
