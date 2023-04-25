@@ -19,7 +19,7 @@ if (searchTabs) {
     searchTabs = searchTabs.children;
 
     const searchLinks = [
-        "https://library.search.gonzaga.edu/discovery/search?vid=01WIN_GONZAGA:FOLEY&tab=Gonzaga_Summit_CDI&search_scope=zagsummitcdi&lang=en&pcAvailability=true&query=any,contains,",
+        "https://library.search.gonzaga.edu/discovery/search?tab=Everything&search_scope=MyInst_and_CI&vid=01WIN_GONZAGA:FOLEY&lang=en&offset=0&query=any,contains,",
         "https://library.search.gonzaga.edu/discovery/search?tab=CourseReserves&search_scope=CourseReserves&vid=01WIN_GONZAGA:FOLEY&lang=en&offset=0&query=any,contains,",
         "https://library.search.gonzaga.edu/discovery/jsearch?vid=01WIN_GONZAGA:FOLEY&tab=jsearch_slot&lang=en&pcAvailability=true&query=any,contains,"
     ];
@@ -47,9 +47,10 @@ if (searchTabs) {
         });
     }
 
-    searchButton.addEventListener("click", function () {
+    searchButton.addEventListener("click", function (event) {
         const query = searchBox.value;
         window.open(searchLinks[currentTab] + query, "_blank");
+        event.preventDefault();
     });
 
     const clip = new ClipboardJS('.copy');
