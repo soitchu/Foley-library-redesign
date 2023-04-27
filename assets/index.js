@@ -90,10 +90,13 @@ for (const item of menuItems) {
         }
     });
 
-
 }
 
 spotlightDOM.addEventListener("click", function () {
     closeAllMenu();
     this.style.display = "none";
+});
+
+document.querySelector("#libName").addEventListener("click", function(){
+    window.location.replace("./index.html");
 });
